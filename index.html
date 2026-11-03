@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>متابعة التزام منسوبي المدرسة | مدارس ابن رشد</title>
+<style>
+:root{--navy:#17365d;--blue:#23578c;--bg:#f3f7fb;--line:#dbe4ef;--green:#147d5b}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#edf4eb 0%,#f6f5eb 48%,#eaf1e9 100%);color:#1b2b3e;font-family:Tahoma,Arial,sans-serif;line-height:1.8}
+header{background:linear-gradient(135deg,#245b36,#397438 58%,#6c9a58);color:white;text-align:center;padding:18px 12px 24px;border-bottom:6px solid #d7b66b;box-shadow:0 5px 18px #193c2618}
+ .school-brand{display:flex;justify-content:center;align-items:center;margin:0 auto 8px}.official-logo{display:block;width:104px;height:104px;object-fit:contain;background:#fff;border:3px solid #e6d49c;border-radius:16px;padding:5px;box-shadow:0 5px 16px #102b4b25}.brand-copy{text-align:center;margin:0 auto 14px}.brand-ar{font-size:clamp(1.25rem,3vw,1.75rem);font-weight:800;line-height:1.35}.brand-en{font-size:.78rem;letter-spacing:1px;opacity:.9;direction:ltr}
+ .school-photos{max-width:760px;margin:0 auto 17px;display:flex;justify-content:center}.school-photos img{display:block;width:100%;height:clamp(130px,25vw,230px);object-fit:cover;border:3px solid #ffffffd9;border-radius:13px;box-shadow:0 5px 15px #102b4b35}
+header h1{max-width:960px;margin:0 auto;font-size:clamp(1.25rem,4vw,2.05rem);line-height:1.55}header p{margin:5px 0 0;color:#f5f7e9}
+main{max-width:1080px;margin:20px auto;padding:0 14px 45px}.card{background:linear-gradient(180deg,#fff 0%,#fcfdfb 100%);border:1px solid var(--line);border-top:4px solid #c6d9b9;border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 8px 25px #21452b0d}
+h2,h3{color:#285c2d;margin-top:0}.muted{color:#63768a;font-size:.92rem}.field{display:flex;flex-direction:column;gap:5px;margin:12px 0}input,select,textarea{width:100%;font:inherit;border:1px solid #b9c8d8;border-radius:9px;padding:11px;background:white}input:focus,select:focus,textarea:focus{outline:3px solid #d7e8c8;border-color:#397438}
+.btn{border:0;border-radius:9px;padding:11px 17px;font:inherit;cursor:pointer;margin:5px 3px}.primary{background:#397438;color:white}.secondary{background:#e9f1f9;color:var(--navy)}.danger{background:#fce9e9;color:#a52626}.btn:disabled{opacity:.55;cursor:wait}
+.hidden{display:none!important}.status{padding:11px;border-radius:9px;margin:10px 0;white-space:pre-wrap}.ok{background:#e7f8ef;color:#11603b}.err{background:#fff0f0;color:#8a2020}
+.progress{display:flex;align-items:center;gap:15px;margin-top:22px}.track{height:12px;border-radius:10px;background:#ddd;flex:1;overflow:hidden}#bar{height:100%;width:10%;background:#397438;transition:width .2s}
+.actions{display:flex;justify-content:space-between;flex-wrap:wrap;margin-top:18px}.rating-head{display:flex;gap:8px;flex-wrap:wrap;background:#f7faf5;border:1px solid #e3ebdf;padding:12px;border-radius:10px;margin:14px 0;position:sticky;top:6px;z-index:2}
+.rating-head span{padding:5px 11px;border-radius:7px;background:#fff;border:1px solid #dbe4ef;font-weight:bold;font-size:.9rem}
+.question{border:1px solid #e3ebdf;border-radius:12px;padding:13px;margin:12px 0;background:#fff}.qtext{font-weight:700;margin-bottom:10px}.choices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.choice{display:flex;align-items:center;justify-content:center;gap:5px;border:1px solid #dbe4ef;border-radius:9px;padding:9px 4px;background:#f9fbf8;font-size:.9rem;cursor:pointer}.choice input{width:auto;margin:0;accent-color:#397438}.choice:has(input:checked){background:#eaf4e6;border-color:#397438;color:#245b36;font-weight:bold}
+.tabrow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.notice{border:1px solid #ecdca1;background:#fff9e7;border-radius:10px;padding:12px;margin:12px 0}
+#archivePanel{margin-top:18px}
+#reportsList{display:grid;gap:16px;margin-top:16px}
+.report{border:1px solid #d8e5d2;border-right:6px solid #397438;border-radius:15px;padding:17px;margin:0;background:linear-gradient(145deg,#fff 0%,#f7fbf5 100%);box-shadow:0 5px 18px #21452b12}
+.report h3{margin:0 0 10px;color:#245b36;font-size:1.12rem;line-height:1.6}
+.report .report-meta{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 12px}
+.report .meta-chip{display:inline-flex;align-items:center;padding:5px 11px;border-radius:20px;background:#eaf3e5;color:#285c2d;border:1px solid #d5e5cd;font-size:.86rem;font-weight:700}
+.report summary{cursor:pointer;color:#1f5d8c;font-weight:800;background:#edf4fa;border:1px solid #d8e6f1;border-radius:9px;padding:10px 12px;list-style-position:inside}
+.report details[open] summary{margin-bottom:12px;background:#e5f0f8}
+.report .archive-section{border:1px solid #e1e9dc;border-radius:11px;margin:12px 0;overflow:hidden;background:#fff}
+.report .archive-section h4{margin:0;padding:10px 13px;background:linear-gradient(90deg,#e8f1e3,#f5f8ef);color:#245b36;border-bottom:1px solid #dce8d5;font-size:1rem}
+.report .archive-section ol{margin:0;padding:10px 38px 12px 14px}
+.report .archive-section li{padding:8px 5px;border-bottom:1px dashed #e5e9e2;line-height:1.8}
+.report .archive-section li:last-child{border-bottom:0}
+.rating-chip{display:inline-block;margin:3px 4px;padding:3px 9px;border-radius:7px;font-size:.84rem;font-weight:800;background:#eaf4e6;color:#245b36;border:1px solid #cfe2c6}
+.report .report-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+@media(max-width:650px){.report{padding:13px}.report .report-actions .btn{flex:1}}
+footer{text-align:center;color:#65798c;padding:12px}
+@media(max-width:650px){.card{padding:14px}.choices{grid-template-columns:repeat(2,minmax(0,1fr))}.school-photos{grid-template-columns:1fr}.school-photos img{height:150px}.official-logo{width:86px;height:86px}.brand-en{font-size:.68rem}.rating-head{position:static}}
+</style>
+</head>
+<body>
+<header>
+<div class="school-brand"><img class="official-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuLk5bR1ni6ys-QIgWOQWxMebvicBWO1rJGzfkJuIchNVIpRky3_LkD0o&s=10" alt="شعار مدارس ابن رشد"></div>
+<div class="brand-copy"><div class="brand-ar">مدارس ابن رشد</div><div class="brand-en">IBN ROSHD SCHOOLS · JAZAN</div></div>
+<div class="school-photos"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKgiuJxwAraFcx1a1eYQMa5trb_B96hSKz0gPPzPc4Og&s=10" alt="مبنى مدارس ابن رشد" loading="eager"></div>
+<h1>متابعة المدرسة التزام منسوبيها بقواعد السلوك الوظيفي وأخلاقيات مهنة التعليم</h1><p>متابعة الالتزام الوظيفي وأخلاقيات مهنة التعليم</p>
+</header>
+<main>
+<div id="status" role="status" aria-live="polite"></div>
+<section class="card" id="formCard">
+<form id="reportForm">
+<div class="step" data-step="0"><h2>الدخول إلى نموذج المتابعة</h2><p class="muted">أدخل رمز الدخول للانتقال إلى النموذج.</p><label class="field">رمز الدخول *<input id="accessCode" type="password" inputmode="numeric" autocomplete="off" required></label></div>
+<div class="step hidden" data-step="1"><h2>بيانات شاغل الوظيفة التعليمية</h2><label class="field">الاسم *<select id="reporter" required><option value="">اختر الاسم</option></select></label><label class="field">تاريخ المتابعة *<input id="reportDate" type="date" required></label></div>
+<div id="sectionSteps"></div>
+<div class="step hidden" data-step="10"><h2>مراجعة التقرير وإرساله</h2><div id="review" class="notice"></div><p class="muted">تأكد من اكتمال تقييم جميع البنود قبل الإرسال.</p><button id="sendBtn" class="btn primary" type="submit">حفظ وإرسال التقرير</button><button id="printBtn" type="button" class="btn secondary">طباعة / حفظ PDF</button></div>
+<div class="progress"><span id="pageNumber">صفحة 1 من 11</span><div class="track"><div id="bar"></div></div></div>
+<div class="actions"><button type="button" class="btn secondary hidden" id="prev">السابق</button><button type="button" class="btn primary" id="next">التالي</button></div>
+</form>
+</section>
+<section class="card" id="archiveEntry"><h2>أرشيف التقارير</h2><p class="muted">الدخول مخصص للمستخدمين المصرح لهم فقط.</p><button class="btn secondary" id="archiveToggle">فتح أرشيف التقارير</button><div id="archiveLogin" class="hidden"><label class="field">البريد الإلكتروني<input id="archiveEmail" type="email" autocomplete="username"></label><label class="field">كلمة المرور<input id="archivePassword" type="password" autocomplete="current-password"></label><button class="btn primary" id="loginBtn">تسجيل الدخول</button><button class="btn secondary hidden" id="logoutBtn">تسجيل الخروج</button><div id="archiveStatus" class="status"></div></div><div id="archivePanel" class="hidden"><div class="tabrow"><input id="search" placeholder="بحث بالاسم أو التاريخ"><input id="filterDate" type="date"><button class="btn secondary" id="refreshBtn">تحديث</button><button class="btn secondary" id="exportBtn">تصدير CSV</button></div><div id="reportsList"></div></div></section>
+<footer>مدارس ابن رشد • متابعة الالتزام الوظيفي وأخلاقيات مهنة التعليم</footer>
+</main>
+<script>
+const SUPABASE_URL="https://zqtgekdxnanuawbzxzlu.supabase.co";
+const SUPABASE_KEY="sb_publishable_qxDemcglTNNTXlMS8zQwDQ_qNxah-rK";
+const ALLOWED_EMAILS=["ali400483@gmail.com","mryamr7@gmail.com"];
+const PASSCODE="44321";
+const NAMES=["سند علي ناصر عريشي", "عبد الرحمن ولي بحيص حكمي", "أحمد بن جابر احمد نعيم المدخلي", "اياد سعدون احمد بشكور", "محمد عبد الرحمن إبراهيم أحمد أبو عبده", "علي محمد ابراهيم خثامي", "احمد علي علي شراحيلي", "ابراهيم عبدالله محمد نجار", "محمد علي محمد السعيدي", "عبدالرحمن موسى ربيع عقيلي", "الفضل إبراهيم الصادق علي", "محمد بن علي بن أحمد شراحيلي", "محمود سعد حسن سيد احمد", "محمد عبد الرحمن عبد المولى مصطفى", "مهند محمد يحيى صلوي", "عبدالوهاب احمد علاالله زرير", "حذيفه عبده عبدالله حمدي", "مشبب رميضي سعيد الشهراني", "احمد يحي علي بكري ابو القصب", "أحمد بن موسى حسين نجمي", "حسين ناصر محمد سوادي", "احمد حسين ابراهيم زولي", "عبدالرحمن عيسى محمد أحمد", "خالد علي حسن نشيلي", "ريان علي موسى عقيلي", "هادي يحي حمد خواجي", "أحمد علي محمد أبو الفضائل", "عبدالعزيز احمد أبو جرة", "عطية حسين علي جابر", "محمد حموده الصافي نعيم", "محمد سلمان علي فقيري", "حاتم حسين احمد واصلي", "خالد يحي علي الحازمي", "احمد سيد محمد خليل", "مصطفى حسن إبراهيم احمد", "ماجد حسين احمد عريشي", "أحمد حسن محمود عبدالجليل", "حسين علي حمود الشريف", "عبدالعزيز حسن علي دهل", "محمود عبدالباقى صالح سلامه", "أحمد عيسى ابراهيم خرمي", "حسين حسن احمد مرعي", "محمد عبدالفتاح محمد عليبه", "احمد حاتم محمد فودة", "مصطفى عبدالعزيز مصطفى حسن سليمان", "محمد حسين عواجي حكمي", "إبراهيم علي محمد حكمي", "فهد منصور علي معشي"];
+const SECTIONS=[{"title": "واجبات شاغلي الوظائف التعليمية العامة", "items": ["الإخلاص لله ثم الولاء للملك والانتماء للوطن.", "المحافظة على رسالة التعليم وتعزيز ثقة المجتمع بها.", "تنفيذ التوجيهات الصادرة إليه من رؤسائه بدقة وأمانة في حدود الأنظمة والتعليمات، وإنجاز المعاملات – وبخاصة ما يرد من الجهات الرقابية – بالسرعة والدقة المطلوبة وضمن حدود الاختصاص.", "تلتزم شاغلات الوظائف التعليمية بالمحافظة على الذوق العام وحسن المظهر، وذلك بارتداء اللباس اللائق الساتر والمحتشم الذي يليق بمكان العمل، ويستثنى من الزي الرسمي معلمات التربية البدنية أو من يكلف بعملهم، على ألا يكون لباساً مرتبطاً بأندية لمنع التعصب الرياضي، كما يجب ألا يتضمن عبارات أو رسومات غير لائقة، ولا يحمل شعارات منافية للدين، أو الأخلاق، أو عادات المجتمع، أو الأنظمة والتعليمات.", "يلتزم شاغلو الوظائف التعليمية بالمحافظة على الذوق العام وحسن المظهر، وذلك بارتداء الزي الرسمي الوطني (الثوب والغترة أو الشماغ)، ويستثنى من الزي الرسمي معلمو التربية البدنية أو من يكلف بعملهم، على ألا يكون لباساً مرتبطاً بأندية لمنع التعصب الرياضي، كما يجب ألا يتضمن عبارات أو رسومات غير لائقة، ولا يحمل شعارات منافية للدين، أو الأخلاق، أو عادات المجتمع، أو الأنظمة والتعليمات.", "عدم ارتكاب أي عمل ينافي الشرع أو الذوق العام مثل التشبه بالجنس الآخر في اللباس والمظهر والسلوكيات.", "التحلي بالقيم والأخلاق الحميدة كالنزاهة والصدق والأمانة والتسامح والرفق والعدالة.", "الالتزام بالقيم وثقافة الوزارة وفق ما تنص عليه السياسات والتشريعات، وتجنب أي سلوك يتعارض معها.", "الترفع عن كل ما يخل بشرف مهنته وكرامتها سواء في مكان العمل أو خارجه.", "العمل على خدمة أهداف العملية التعليمية وغاياتها، وتحقيق المصلحة العامة دون سواها.", "الالتزام والامتثال للأنظمة واللوائح والسياسات والتعليمات النافذة ذات العلاقة بعمله دون أي تجاوز أو مخالفة أو إهمال.", "المحافظة على المكتسبات الوطنية وسلامة مكان العمل.", "توخي الموضوعية في تصرفاته، وأن يعمل بحيادية دون تمييز.", "الالتزام بمقتضى نظام حماية البيانات الشخصية الصادر بالقرار مجلس الوزراء رقم (98) وتاريخ 1443/2/7هـ، الموافق عليه بالمرسوم الملكي رقم (م/19) وتاريخ 1443/2/9هـ، ولائحته التنفيذية والقرارات والتعليمات الصادرة بشأنها."]}, {"title": "على شاغل الوظيفة التعليمية أن يراعي في أدائه المهني ما يأتي", "items": ["يلتزم المعلم بمتطلبات الوظيفة التعليمية الصادرة من الجهات ذات العلاقة؛ لتحقيق أعلى معايير الأداء المهني والجودة في التدريس، وضمان تقديم المناهج بما يلبي احتياجات الطلاب.", "يحرص على التطوير المهني المستمر واستخدام أساليب التدريس الفعالة والمبتكرة؛ لتحقيق أفضل النتائج التعليمية.", "يلتزم بصحة ودقة المعلومات المقدمة للطلاب، ومناسبتها لهم، ويدعمهم في تطوير مهاراتهم بما يحقق جودة التعليم.", "يؤدي واجباته التعليمية والتربوية بالتزام ومسؤولية، مع المحافظة على أوقات العمل والانضباط حسبما تقتضيه أصول المهنة، وطبيعة المادة، وفقاً للأنظمة والتوجيهات الواردة من جهات الاختصاص.", "يبادر بطرح أفكار ومشاريع جديدة تسهم في تحسين العملية التعليمية.", "يلتزم في أدائه المهني بتعزيز التواصل والتعاون المتبادل بين منسوبي المدرسة والطلاب وأولياء الأمور.", "يواكب التطورات في مجال التعليم ويطبق الممارسات الحديثة في التدريس والإدارة الصفية.", "إعداد وتنفيذ الدروس التطبيقية والأنشطة المدرسية، وإنهاء المقررات الدراسية حسب البرنامج الزمني الموزع على جميع أسابيع الفصل الدراسي.", "توظيف طرائق التعلم ومصادره وتقنية المعلومات المتوفرة لرفع مستوى الأداء التعليمي على نحو يدفع الطلاب للمشاركة والتميز."]}, {"title": "على شاغل الوظيفة التعليمية أن يراعي في تصرفاته مع الطلاب ما يأتي", "items": ["تنمية لدى الطلاب الاعتزاز بدينهم والولاء لملكهم والانتماء لوطنهم، كما يعزز لديهم أسبقية التفاعل الإيجابي مع الثقافات الأخرى.", "الاطلاع والتقيد باللائحة التنفيذية لنظام حماية الطفل الصادر بالمرسوم الملكي رقم (م/14) بتاريخ 1438/02/03هـ ونظام الحماية من الإيذاء الصادر بالمرسوم الملكي رقم (م/52) بتاريخ 1434/11/15هـ، والالتزام بتطبيقاتها في ممارساته التربوية والتعليمية؛ لضمان بيئة تعليمية آمنة وداعمة لنمو الطلاب وتعزيز رفاههم.", "تعزيز شخصية الطالب وتنمية مواهبه، وبناء ثقته بنفسه وأنه عنصر فاعل في المجتمع.", "الالتزام بالمبادئ والقيم الأخلاقية والمجتمعية وتعزيزها لدى الطلاب، من خلال نزاهته وتوجيهاته وسلوكياته في كل أعماله.", "تجنب الدخول في نقاشات حول القضايا ذات الحساسية، مثل: التيارات الدينية، والقضايا المذهبية الخلافية، والشؤون السياسية، وغيرها من الموضوعات.", "تشجيع الطلاب على العمل بروح الفريق، وتعزيز المهارات التعاونية لديهم، خاصة في مدارس الدمج.", "الالتزام التام بالعدالة والإنصاف في معاملة جميع الطلاب، وتقديم الدعم لهم دون تمييز.", "تقديم الدعم الخاص لذوي الإعاقة، سواء أكان ذلك على الصعيد الأكاديمي أم الاجتماعي أم الطلابي.", "تعزيز وعي الطلاب بأهمية المادة العلمية التي يتعلمها وغرس حب القراءة والاطلاع والمعرفة، وتطبيق ما يتعلمه في حياته اليومية.", "عدم تكليف الطلاب بطلبات أو أمور مادية لإقامة الأنشطة أو لتوفير وسائل تعليمية.", "التعامل مع الوثائق والمعلومات الشخصية للطلاب بسرية تامة وفقاً للأنظمة والتعليمات.", "الحرص على متابعة أعمال الطلاب الصفية وغير الصفية، وتقديم التغذية الراجعة لهم.", "تهيئة البيئة المناسبة لتحفيز الابتكار والتفكير الإبداعي واكتشاف وتعزيز القدرات والمواهب الطلابية، حسب ما تقرره الجهات ذات الصلة.", "المشاركة الفاعلة في البرامج التربوية والتعليمية المعتمدة، وتهيئة الطلاب للمشاركة في الاختبارات الوطنية والدولية.", "متابعة حالات الطلاب المتعلقة بالجوانب الصحية والاجتماعية والنفسية المعيقة لتقدم الطالب دراسياً، والرفع للمختصين.", "توعية الطلاب بأهمية الانضباط المدرسي، والتأكيد على ذلك من خلال البرامج والأنشطة المدرسية وبيان أثره في تحسين نواتج التعلم.", "الالتزام بضوابط لائحة تقويم الطلاب والأحكام العامة واستخدام الأساليب المناسبة لتقويم الطالب حسب اللائحة."]}, {"title": "على شاغل الوظيفة التعليمية أن يراعي في تصرفاته مع أولياء الأمور ما يأتي", "items": ["تعزيز التواصل الإيجابي مع أولياء الأمور، والاستماع إلى ملاحظاتهم ومقترحاتهم والإجابة عن استفساراتهم وتساؤلاتهم بما يخدم مصلحة الطالب في الزيارات المدرسية، أو عن طريق الوسائل التقنية في المنصات الرسمية المعتمدة للتواصل مع ولي الأمر.", "التعامل مع أولياء الأمور باحترام وتقدير، وتقديم المعلومات اللازمة حول مستوى أبنائهم الأكاديمي والسلوكي بأسلوب واضح وموضوعي ودون تمييز.", "توجيه وتوعية أسر الطلاب من ذوي الإعاقة لتعديل الاتجاهات السلوكية الخاطئة وتوثيق الروابط بين البيت والمدرسة.", "تجنب أي سلوكيات لفظية أو غير لفظية قد تؤدي إلى سوء الفهم أو إثارة النزاعات، والالتزام بأسلوب الحوار المهني في مناقشة الأمور المتعلقة بالطالب.", "التعاون مع ولي الأمر في إيجاد الحلول المناسبة لأي تحديات يواجهها الطالب، وإرشاده إلى الأساليب التربوية لدعم تقدمه التعليمي."]}, {"title": "على شاغل الوظيفة التعليمية أن يراعي في تصرفاته مع المجتمع ما يأتي", "items": ["تعزيز القيم المجتمعية وترسيخ ثقافة المواطنة الواعية في نفوس الطلاب، وتوعيتهم بأهمية احترام الأنظمة والقوانين والمشاركة في بناء المجتمع.", "احترام التنوع في وجهات النظر، وبناء علاقات مهنية إيجابية مع جميع أفراد المجتمع.", "المساهمة في رفع الوعي المجتمعي من خلال نشر المعرفة والتعلم المستمر، ودعم الفعاليات والأنشطة الثقافية والتوعوية التي تسهم في تطوير المجتمع.", "تحفيز الطلاب على العمل التطوعي والمشاركة في المبادرات التي تعزز التكافل الاجتماعي.", "الالتزام بالسلوكيات الإيجابية التي تعكس قيمة المعلم في المجتمع، والتعامل باحترام مع جميع أفراد المجتمع.", "مراعاة القيم المجتمعية في تقديم المحتوى التعليمي والتوعوي الهادف، مع تجنب المعلومات المضللة أو المحتوى الذي يتعارض مع أخلاقيات المهنة."]}, {"title": "على شاغل الوظيفة التعليمية أن يراعي في تصرفاته تجاه رؤسائه ما يأتي", "items": ["الالتزام في تنفيذ المهام الموكلة إليه من رؤسائه، وإذا كانت هذه المهام مخلة بالأنظمة والتعليمات فعليه أن يُعْلِم رئيسه خطياً.", "التعامل مع رؤسائه باحترام وتزويدهم بالرأي والمشورة والخبرة التي يمتلكها بكل موضوعية وصدق بما يخدم مصلحة العمل."]}, {"title": "على شاغل الوظيفة التعليمية أن يراعي في تصرفاته تجاه مرؤوسيه ما يأتي", "items": ["أن يكون قدوة حسنة لمرؤوسيه من حيث الالتزام بالأنظمة والتعليمات.", "تنمية قدرات مرؤوسيه ومساعدتهم وتحفيزهم على تحسين أدائهم عن طريق التدريب وغيره.", "نقل المعرفة والخبرات التي اكتسبها إلى مرؤوسيه وتشجيعهم على تبادل المعلومات.", "الإشراف على مرؤوسيه ومتابعة أعمالهم وتقويم أدائهم بموضوعية وتجرد، ومساءلة المقصر منهم والسعي إلى توفير فرص التدريب والتطوير لهم وفقاً للأنظمة والتعليمات ذات العلاقة.", "احترام حقوق مرؤوسيه والتعامل معهم دون محاباة أو تمييز.", "أن تكون التعليمات والتوجيهات لمرؤوسيه مكتوبة ما أمكن ذلك."]}, {"title": "على شاغل الوظيفة التعليمية أن يراعي في تصرفاته تجاه زملائه ما يأتي", "items": ["التعامل باحترام ولباقة وصدق مع زملائه والمحافظة على علاقة سليمة وودية معهم دون تمييز.", "مراعاة العلاقات الإنسانية مع الزملاء والحرص على احترام خصوصياتهم والامتناع عن استغلال أي معلومة تتعلق بحياتهم الخاصة بقصد الإساءة.", "التعاون مع زملائه ومشاركتهم آراءه بمهنية وموضوعية عالية وتقديم المساعدة لهم قدر الإمكان لحل المشكلات التي تواجههم في مجال العمل.", "العمل بروح الفريق مع زملائه لتحقيق أهداف العملية التعليمية.", "نقل المعرفة والمهارات والخبرات لزملائه، والإسهام في بناء بيئة تعليمية قائمة على التعلم والتطوير المستمر."]}];
+const RATINGS=["مرتفع جدا","مرتفع","متوسط","منخفض"];
+const $=id=>document.getElementById(id);
+let sb=null, current=0, reports=[];
+function msg(text,error=false,target="status"){const e=$(target);e.textContent=text;e.className="status "+(error?"err":"ok");}
+function today(){let d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-")}
+function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function initForm(){
+  $("reportDate").value=today();
+  NAMES.forEach(n=>{let o=document.createElement("option");o.value=n;o.textContent=n;$("reporter").append(o)});
+  const root=$("sectionSteps");
+  SECTIONS.forEach((sec,si)=>{
+    const section=document.createElement("div");section.className="step hidden";section.dataset.step=String(si+2);
+    let title=document.createElement("h2");title.textContent=sec.title;section.append(title);
+    let legend=document.createElement("div");legend.className="rating-head";legend.innerHTML="<b style='width:100%'>مستوى التقييم</b>"+RATINGS.map(x=>`<span>${x}</span>`).join("");section.append(legend);
+    sec.items.forEach((q,qi)=>{
+      const id=`s${si}q${qi}`, card=document.createElement("div");card.className="question";
+      card.innerHTML=`<div class="qtext">${qi+1}. ${escapeHtml(q)}</div><div class="choices">${RATINGS.map((r,ri)=>`<label class="choice"><input type="radio" name="${id}" value="${escapeHtml(r)}"><span>${r}</span></label>`).join("")}</div>`;
+      section.append(card);
+    });
+    root.append(section);
+  });
+}
+function show(n){
+ current=Math.max(0,Math.min(10,n));
+ document.querySelectorAll(".step").forEach(x=>x.classList.toggle("hidden",Number(x.dataset.step)!==current));
+ $("prev").classList.toggle("hidden",current===0);$("next").classList.toggle("hidden",current===10);
+ $("pageNumber").textContent=`صفحة ${current+1} من 11`;$("bar").style.width=`${(current+1)/11*100}%`;
+ if(current===10) buildReview();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function buildReview(){
+ const total=SECTIONS.reduce((a,s)=>a+s.items.length,0);
+ const done=document.querySelectorAll('#sectionSteps input[type="radio"]:checked').length;
+ $("review").textContent=`الاسم: ${$("reporter").value||"—"} | التاريخ: ${$("reportDate").value||"—"} | التقييمات المكتملة: ${done} من ${total}.`;
+}
+function collect(){
+ const evaluations=SECTIONS.map((s,si)=>({title:s.title,items:s.items.map((q,qi)=>({question:q,rating:document.querySelector(`input[name="s${si}q${qi}"]:checked`)?.value||""}))}));
+ return {reporter:$("reporter").value,reportDate:$("reportDate").value,evaluations,createdAt:new Date().toISOString(),schema:"ethics-v1"};
+}
+function validateSection(si){
+ const s=SECTIONS[si];for(let qi=0;qi<s.items.length;qi++){if(!document.querySelector(`input[name="s${si}q${qi}"]:checked`)){msg(`يرجى اختيار تقييم للبند رقم ${qi+1} قبل الانتقال.` ,true);return false}}
+ return true;
+}
+$("next").onclick=()=>{
+ if(current===0){if($("accessCode").value.trim()!==PASSCODE){msg("رمز الدخول غير صحيح.",true);return}}
+ if(current===1){if(!$("reporter").value||!$("reportDate").value){msg("اختر الاسم وحدد تاريخ المتابعة أولاً.",true);return}}
+ if(current>=2&&current<=9&&!validateSection(current-2))return;
+ $("status").textContent="";show(current+1);
+};
+$("prev").onclick=()=>show(current-1);
+$("printBtn").onclick=()=>window.print();
+$("reportForm").onsubmit=async e=>{
+ e.preventDefault();const data=collect();const total=SECTIONS.reduce((a,s)=>a+s.items.length,0);
+ const done=data.evaluations.reduce((a,s)=>a+s.items.filter(x=>x.rating).length,0);
+ if(done!==total){msg("لا يمكن الإرسال قبل تقييم جميع البنود.",true);return}
+ $("sendBtn").disabled=true;
+ try{
+  const {error}=await sb.from("ethics_reports").insert({reporter:data.reporter,report_date:data.reportDate,report_data:data});
+  if(error)throw error;
+  msg("تم حفظ التقرير بنجاح في قاعدة البيانات. يمكنك طباعة نسخة PDF من زر الطباعة.");
+  $("reportForm").reset();$("reportDate").value=today();show(0);
+ }catch(err){msg("تعذر حفظ التقرير: "+(err.message||"تحقق من إعدادات Supabase وسياسات الجدول."),true)}
+ finally{$("sendBtn").disabled=false}
+};
+$("archiveToggle").onclick=()=>$("archiveLogin").classList.toggle("hidden");
+$("loginBtn").onclick=async()=>{
+ const email=$("archiveEmail").value.trim().toLowerCase(),password=$("archivePassword").value;
+ if(!ALLOWED_EMAILS.includes(email)){msg("هذا البريد غير مصرح له بدخول الأرشيف.","true","archiveStatus");return}
+ const {data,error}=await sb.auth.signInWithPassword({email,password});
+ if(error){msg("تعذر تسجيل الدخول: "+error.message,true,"archiveStatus");return}
+ await loadArchive();
+};
+$("logoutBtn").onclick=async()=>{await sb.auth.signOut();$("archivePanel").classList.add("hidden");$("archiveLogin").classList.remove("hidden");msg("تم تسجيل الخروج.",false,"archiveStatus")};
+async function loadArchive(){
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user||!ALLOWED_EMAILS.includes((user.email||"").toLowerCase())){await sb.auth.signOut();msg("الحساب غير مصرح له.",true,"archiveStatus");return}
+ $("archivePanel").classList.remove("hidden");$("archiveLogin").classList.add("hidden");
+ const {data,error}=await sb.from("ethics_reports").select("*").order("created_at",{ascending:false}).limit(500);
+ if(error){msg("تعذر تحميل الأرشيف: "+error.message,true,"archiveStatus");return}
+ reports=data||[];renderReports();
+}
+function renderReports(){
+ const search=$("search").value.trim(),date=$("filterDate").value;
+ const list=reports.filter(r=>(!date||r.report_date===date)&&(!search||`${r.reporter} ${r.report_date}`.includes(search)));
+ $("reportsList").innerHTML=list.length?list.map(r=>{
+ const d=r.report_data||{};
+ const blocks=(d.evaluations||[]).map((s,si)=>`<section class="archive-section"><h4>${si+1}. ${escapeHtml(s.title)}</h4><ol>${(s.items||[]).map(i=>`<li>${escapeHtml(i.question)} <span class="rating-chip">${escapeHtml(i.rating||"—")}</span></li>`).join("")}</ol></section>`).join("");
+ return `<article class="report"><h3>${escapeHtml(r.reporter||d.reporter||"—")}</h3><div class="report-meta"><span class="meta-chip">تاريخ المتابعة: ${escapeHtml(r.report_date||d.reportDate||"—")}</span><span class="meta-chip">عدد المحاور: ${(d.evaluations||[]).length}</span></div><details><summary>عرض تفاصيل التقرير والتقييمات</summary>${blocks||"<p class='muted'>لا توجد تفاصيل محفوظة لهذا التقرير.</p>"}</details><div class="report-actions"><button class="btn primary" onclick="printOne('${r.id}')">طباعة التقرير / حفظ PDF</button></div></article>`;
+ }).join(""):"<p class='muted'>لا توجد تقارير مطابقة.</p>";
+}
+window.printOne=id=>{
+ const r=reports.find(x=>x.id===id);if(!r)return;
+ const d=r.report_data||{};
+ const sections=(d.evaluations||[]).map((s,si)=>`<section class="pdf-section"><h3>${si+1}. ${escapeHtml(s.title)}</h3><ol>${(s.items||[]).map(i=>`<li><span>${escapeHtml(i.question)}</span><strong>${escapeHtml(i.rating||"—")}</strong></li>`).join("")}</ol></section>`).join("");
+ const w=window.open("","_blank");if(!w){alert("يرجى السماح بالنوافذ المنبثقة لطباعة التقرير.");return;}
+ w.document.write(`<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>تقرير متابعة الالتزام</title><style>
+ *{box-sizing:border-box}body{font-family:Tahoma,Arial,sans-serif;line-height:1.85;color:#243528;margin:0;background:#f5f8f2;padding:24px}
+ .page{max-width:900px;margin:auto;background:#fff;padding:28px;border:1px solid #dce8d5;border-radius:14px}
+ .head{text-align:center;border-bottom:5px solid #d7b66b;padding-bottom:18px;margin-bottom:20px}
+ .head img{width:78px;height:78px;object-fit:contain;margin-bottom:8px}.head h1{font-size:22px;color:#245b36;margin:5px 0}.head p{margin:0;color:#687968;font-size:13px}
+ .title{background:#eaf2e5;color:#245b36;padding:13px 16px;border-right:6px solid #397438;border-radius:8px;font-size:18px;margin:18px 0}
+ .info{display:flex;gap:12px;flex-wrap:wrap;margin:15px 0}.info span{background:#f0f5ec;border:1px solid #dbe8d3;color:#285c2d;border-radius:8px;padding:8px 12px;font-weight:bold}
+ .pdf-section{border:1px solid #dce8d5;border-radius:10px;margin:15px 0;overflow:hidden;break-inside:avoid}
+ .pdf-section h3{margin:0;background:#eaf2e5;color:#245b36;padding:11px 14px;font-size:16px;border-bottom:1px solid #dce8d5}
+ .pdf-section ol{margin:0;padding:10px 38px 12px 14px}.pdf-section li{padding:8px 4px;border-bottom:1px dashed #e4e9e0}.pdf-section li:last-child{border:0}
+ .pdf-section strong{display:inline-block;margin-right:8px;background:#e5f1df;color:#245b36;border:1px solid #cfe1c6;border-radius:6px;padding:2px 9px;white-space:nowrap}
+ .foot{text-align:center;color:#738071;border-top:1px solid #e2e9de;margin-top:22px;padding-top:12px;font-size:12px}
+ @page{size:A4;margin:14mm}@media print{body{background:#fff;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}.page{border:0;padding:0;max-width:none}.pdf-section{break-inside:avoid}}
+ </style></head><body><main class="page"><header class="head"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuLk5bR1ni6ys-QIgWOQWxMebvicBWO1rJGzfkJuIchNVIpRky3_LkD0o&s=10" alt="شعار مدارس ابن رشد"><h1>مدارس ابن رشد</h1><p>متابعة الالتزام بقواعد السلوك الوظيفي وأخلاقيات مهنة التعليم</p></header><div class="title">تقرير متابعة الالتزام الوظيفي</div><div class="info"><span>اسم شاغل الوظيفة: ${escapeHtml(d.reporter||r.reporter||"—")}</span><span>تاريخ المتابعة: ${escapeHtml(d.reportDate||r.report_date||"—")}</span></div>${sections}<footer class="foot">مدارس ابن رشد — تقرير متابعة الالتزام الوظيفي وأخلاقيات مهنة التعليم</footer></main><script>window.onload=()=>setTimeout(()=>window.print(),350)<\/script></body></html>`);
+ w.document.close();
+};
+$("refreshBtn").onclick=loadArchive;$("search").oninput=renderReports;$("filterDate").onchange=renderReports;
+$("exportBtn").onclick=()=>{
+ const rows=[["الاسم","التاريخ","الصفحة","البند","التقييم"]];
+ reports.forEach(r=>(r.report_data?.evaluations||[]).forEach(s=>s.items.forEach(i=>rows.push([r.reporter,r.report_date,s.title,i.question,i.rating]))));
+ const csv="\ufeff"+rows.map(row=>row.map(v=>'"'+String(v??"").replaceAll('"','""')+'"').join(",")).join("\r\n");
+ const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));a.download="ibn-rushd-ethics-reports.csv";a.click();
+};
+(async()=>{
+ const {createClient}=await import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm");
+ sb=createClient(SUPABASE_URL,SUPABASE_KEY);
+ initForm();show(0);
+ const {data:{user}}=await sb.auth.getUser();
+ if(user&&ALLOWED_EMAILS.includes((user.email||"").toLowerCase()))loadArchive();
+})();
+</script>
+<style>
+@media print{header .school-photos,header .school-brand,.progress,.actions,#archiveEntry,#status,#sendBtn,#printBtn{display:none!important}.step.hidden{display:block!important}.card{box-shadow:none;border:0}.question{break-inside:avoid}}
+</style>
+</body></html>
